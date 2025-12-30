@@ -1,0 +1,28 @@
+{
+  "name": "Propulsion Controller Development Environment",
+  "build": {
+    "dockerfile": "./Dockerfile", 
+    "context": ".."                
+  },
+  "remoteUser": "root",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces,type=bind",
+  "workspaceFolder": "/workspaces",
+  "runArgs": [
+  "--add-host=host.docker.internal:host-gateway",
+  "--mount",
+  "type=bind,source=${localWorkspaceFolder}/.git,target=/workspaces/.git"
+  ],
+
+  "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-vscode.cpptools",
+          "marus25.cortex-debug",
+          "ms-vscode.hexeditor",
+          "ms-vscode.makefile-tools",
+          "ms-python.python"
+        ]
+      }
+    }
+
+}
