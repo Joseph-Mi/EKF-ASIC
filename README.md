@@ -27,10 +27,10 @@ A complete, modular SystemVerilog implementation of an Extended Kalman Filter (E
 - **Use case**: Backup data source if SPI fails, voltage cross-check
 
 #### Monitoring: PWM DAC Outputs
-- **Channels**: 4 outputs
+- **Channels**: 2
 - **Resolution**: 10-bit (0.1% effective)
 - **Frequency**: 20 kHz PWM (requires external RC filter)
-- **Outputs**: SOC, SOH, Fault Code, Heartbeat
+- **Outputs**: SOC, Heartbeat
 - **Use case**: Real-time monitoring, oscilloscope debugging, watchdog
 
 ### Redundancy & Fault Tolerance
@@ -137,10 +137,10 @@ EKF-ASIC/
 ┌─────────────┐                 ┌──────────────┐
 │    MCU      │                 │  EKF-ASIC    │
 │             │                 │              │
-│  SPI_SCLK  ├────────────────►│  spi_sclk    │
-│  SPI_MOSI  ├────────────────►│  spi_mosi    │
-│  SPI_MISO  │◄────────────────┤  spi_miso    │
-│  SPI_CS_N  ├────────────────►│  spi_cs_n    │
+│  SPI_SCLK   ├────────────────►│  spi_sclk    │
+│  SPI_MOSI   ├────────────────►│  spi_mosi    │
+│  SPI_MISO   │◄────────────────┤  spi_miso    │
+│  SPI_CS     ├────────────────►│  spi_cs      │
 │             │                 │              │
 └─────────────┘                 └──────────────┘
 ```
@@ -319,7 +319,6 @@ while True:
 Connect oscilloscope to DAC outputs:
 - **CH1**: `dac_soc_out` → Real-time SOC (0-3.3V)
 - **CH2**: `dac_heartbeat_out` → 1 Hz if running
-- **CH3**: `dac_fault_out` → Fault code voltage
 
 ### Fault Codes
 
@@ -396,9 +395,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## ✉️ Contact
 
 For questions or support, please open an issue on GitHub.
-
-## 🙏 Acknowledgments
-
-- Original sinc3 filter design
-- OpenCores SPI slave reference
-- Battery modeling community

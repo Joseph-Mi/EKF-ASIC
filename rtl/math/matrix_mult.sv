@@ -21,7 +21,7 @@
 //   For 4x4 matrices: ~112 cycles
 //
 // Author: Joseph Mi
-// Date: Dec 30, 2025
+// Date: Dec 28, 2025
 // =============================================================================
 
 module matrix_mult

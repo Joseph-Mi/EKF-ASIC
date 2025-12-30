@@ -15,23 +15,6 @@ package ekf_params_pkg;
     parameter int CONTROL_DIM = 1; // [I_load]
     
     // ============================================================
-    // FIXED-POINT REPRESENTATION
-    // ============================================================
-    
-    parameter int DATA_WIDTH = 32;
-    parameter int FRAC_BITS = 16;  // Q16.16 format
-    parameter int INT_BITS = DATA_WIDTH - FRAC_BITS;
-    
-    // Fixed-point constants
-    parameter logic [DATA_WIDTH-1:0] FP_ZERO = 32'h0000_0000;
-    parameter logic [DATA_WIDTH-1:0] FP_ONE  = 32'h0001_0000;  // 1.0 in Q16.16
-    parameter logic [DATA_WIDTH-1:0] FP_HALF = 32'h0000_8000;  // 0.5
-    
-    // Battery-specific scaling
-    parameter logic [DATA_WIDTH-1:0] VOLTAGE_SCALE = 32'h0064_0000;  // 100.0 (for 300V → 3V scaling)
-    parameter logic [DATA_WIDTH-1:0] CURRENT_SCALE = 32'h014A_0000;  // 330.0 (for current sense amp)
-    
-    // ============================================================
     // MEMORY ORGANIZATION
     // ============================================================
     
