@@ -1,5 +1,5 @@
 {
-  "name": "Propulsion Controller Development Environment",
+  "name": "EKF ASIC Development Environment",
   "build": {
     "dockerfile": "./Dockerfile", 
     "context": ".."                
